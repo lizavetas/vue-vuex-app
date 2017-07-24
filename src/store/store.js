@@ -19,19 +19,19 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
-        increment: state => {
-            state.counter++;
+        increment: (state, playload) => {
+            state.counter += playload;
         },
         decrement: state => {
             state.counter--;
         }
     },
     actions: {
-        increment: ({commit}) => {
-            commit('increment');
+        increment: ({commit}, playload) => {
+            commit('increment', playload);
         },
-        decrement: ({commit}) => {
-            commit('decrement');
+        decrement: ({commit}, playload) => {
+            commit('decrement', playload);
         },
         asynIncrement: ({comit}) => {
             setTimeout(() => {
