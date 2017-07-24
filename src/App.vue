@@ -8,6 +8,8 @@
                 <hr>
                 <app-counter></app-counter>
                 <app-counter-b></app-counter-b>
+                <hr>
+                <input type="text" :value="value"/>
             </div>
         </div>
     </div>
@@ -20,6 +22,11 @@
     import ResultB from './components/ResultB.vue';
 
     export default {
+        computed: {
+            value() {
+                return this.$store.getters.value;
+            }
+        },
         components: {
             appCounter: Counter,
             appCounterB: CounterB,

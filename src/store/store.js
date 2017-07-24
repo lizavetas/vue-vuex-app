@@ -1,44 +1,33 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
-
+import counter from './modules/counter'
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     plugins: [createLogger()],
     state: {
-        counter: 0
+        value: 0
     },
     getters: {
-        doubleCounter: state => {
-            return state.counter * 2;
-        },
-        stringCounter: state => {
-            return state.counter + ' Clicks'
+        value: state => {
+            return state.value;
         }
     },
     mutations: {
-        increment: (state, playload) => {
-            state.counter += playload;
-        },
-        decrement: state => {
-            state.counter--;
+        updateValue: (state, playload) => {
+            state.value = playload;
         }
     },
     actions: {
-        increment: ({commit}, playload) => {
-            commit('increment', playload);
-        },
-        decrement: ({commit}, playload) => {
-            commit('decrement', playload);
-        },
-        asynIncrement: ({comit}) => {
-            setTimeout(() => {
-                commit('increment');
-            }, 1000)
+        updateValue: ({commit}, playload) => {
+            commit('updateValue', playload);
         }
 
+    },
+    modules: {
+        counter
     }
 });
 
